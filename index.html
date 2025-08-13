@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片拼接工具 - 免费在线图片处理</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="main-nav">
+            <div class="nav-logo">图片拼接工具<span class="free-badge">免费</span></div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">图片拼接</a></li>
+                <li><a href="#" id="tutorial-nav">使用教程</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </nav>
+        
+        <header>
+            <div class="intro-banner">
+                <!--div class="intro-icon"><i class="star-icon">★</i></div-->
+                <p class="intro-text">完全<span class="highlight-free">免费</span>的在线图片拼接工具</p>
+                <p class="intro-subtext">无需注册 · 无水印 · 高质量输出</p>
+                <!--div class="intro-divider"></div>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">◉</span>
+                        <span class="feature-text">多种布局</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">◉</span>
+                        <span class="feature-text">自定义间距</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">◉</span>
+                        <span class="feature-text">高清导出</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">◉</span>
+                        <span class="feature-text">简单易用</span>
+                    </div>
+                </div-->
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="control-panel">
+                <div class="upload-section">
+                    <h2>上传图片</h2>
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="fileInput" multiple accept="image/*" hidden>
+                        <div class="upload-placeholder">
+                            <span class="upload-icon">+</span>
+                            <p>拖拽图片到此处或点击上传</p>
+                            <p class="upload-limit">最多上传20张图片</p>
+                        </div>
+                    </div>
+                    <div class="uploaded-images" id="uploadedImages">
+                        <!-- 上传的图片预览将在这里显示 -->
+                    </div>
+                </div>
+                
+                <div class="grid-settings">
+                    <h2>网格设置</h2>
+                    <div class="preset-layouts">
+                        <h3>预设布局</h3>
+                        <div class="layout-buttons">
+                            <button data-rows="2" data-cols="2">2×2</button>
+                            <button data-rows="3" data-cols="3">3×3</button>
+                            <button data-rows="4" data-cols="4">4×4</button>
+                        </div>
+                    </div>
+                    
+                    <div class="custom-layout">
+                        <h3>自定义布局</h3>
+                        <div class="layout-inputs">
+                            <div class="input-group">
+                                <label for="rowsInput">行数:</label>
+                                <input type="number" id="rowsInput" min="1" max="10" value="3">
+                            </div>
+                            <div class="input-group">
+                                <label for="colsInput">列数:</label>
+                                <input type="number" id="colsInput" min="1" max="10" value="3">
+                            </div>
+                            <button id="applyCustomLayout">应用</button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-spacing">
+                        <h3>网格间距</h3>
+                        <div class="spacing-control">
+                            <input type="range" id="gridSpacing" min="0" max="20" value="0">
+                            <span id="spacingValue">0px</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="export-section">
+                    <h2>导出设置</h2>
+                    <div class="export-options">
+                        <div class="format-selection">
+                            <label for="exportFormat">格式:</label>
+                            <select id="exportFormat">
+                                <option value="png">PNG</option>
+                                <option value="jpeg">JPEG</option>
+                            </select>
+                        </div>
+                        <div class="quality-selection">
+                            <label for="exportQuality">质量:</label>
+                            <input type="range" id="exportQuality" min="0.5" max="1" step="0.1" value="0.9">
+                            <span id="qualityValue">90%</span>
+                        </div>
+                        <div class="resolution-selection">
+                            <label for="exportWidth">宽度 (px):</label>
+                            <input type="number" id="exportWidth" min="100" max="5000" value="1080">
+                            <label for="exportHeight">高度 (px):</label>
+                            <input type="number" id="exportHeight" min="100" max="5000" value="1080">
+                        </div>
+                    </div>
+                    <button id="exportButton" class="export-button">导出图片</button>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <h2>预览</h2>
+                <div class="grid-container" id="gridContainer">
+                    <!-- 网格将在这里动态生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-text">图片处理<span class="free-badge">免费</span></div>
+                <p class="footer-slogan">简单、高效、免费的图片处理工具</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">图片拼接</a></li>
+                        <li><a href="#">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <h3>帮助</h3>
+                    <ul>
+                        <li><a href="#" id="tutorial-footer">使用教程</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 图片拼接工具. 保留所有权利.</p>
+        </div>
+    </footer>
+    
+    <!-- 使用教程弹框 -->
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>图片拼接工具使用教程</h2>
+            <div class="tutorial-content">
+                <div class="tutorial-section">
+                    <h3>1. 上传图片</h3>
+                    <p>点击"上传图片"区域或将图片拖放到此区域，即可上传您想要拼接的图片。支持JPG、PNG等常见图片格式。</p>
+                </div>
+                <div class="tutorial-section">
+                    <h3>2. 选择布局</h3>
+                    <p>在"网格设置"区域，您可以：</p>
+                    <ul>
+                        <li>选择预设布局（1×2、2×2、3×3等）</li>
+                        <li>自定义行数和列数</li>
+                        <li>调整图片之间的间距</li>
+                    </ul>
+                </div>
+                <div class="tutorial-section">
+                    <h3>3. 调整图片</h3>
+                    <p>上传图片后，您可以：</p>
+                    <ul>
+                        <li>拖放图片到不同的网格位置</li>
+                        <li>调整图片在网格中的大小和位置</li>
+                        <li>删除不需要的图片</li>
+                    </ul>
+                </div>
+                <div class="tutorial-section">
+                    <h3>4. 导出拼接图</h3>
+                    <p>完成拼接后，在"导出设置"区域：</p>
+                    <ul>
+                        <li>选择导出格式（JPG或PNG）</li>
+                        <li>调整导出质量</li>
+                        <li>设置导出图片的尺寸</li>
+                        <li>点击"导出"按钮下载最终拼接图</li>
+                    </ul>
+                </div>
+                <div class="tutorial-section">
+                    <h3>使用技巧</h3>
+                    <ul>
+                        <li>为获得最佳效果，建议使用相似尺寸的图片</li>
+                        <li>如需精确控制，可使用自定义行列数</li>
+                        <li>PNG格式适合需要透明背景的拼图</li>
+                        <li>JPG格式文件体积更小，适合分享</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
