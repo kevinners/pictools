@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 状态变量
     let uploadedImagesList = [];
-    let currentRows = 3;
-    let currentCols = 3;
+    let currentRows = 1;
+    let currentCols = 2;
     let currentSpacing = 0; // 默认网格间距为0px
     const MAX_IMAGES = 20;
     let draggedImage = null;
