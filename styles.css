@@ -661,7 +661,7 @@ h3 {
     border-radius: 0px;
     position: relative;
     overflow: hidden;
-    border-right: 0;
+    /*border-right: 0;*/
     border-bottom: 0;
 }
 
